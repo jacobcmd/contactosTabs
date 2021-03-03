@@ -1,0 +1,33 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Eliminar contacto
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  
+  <div id="container">
+    <p *ngIf="datosServer.personas.length==0">No se han añadido contactos</p>
+    
+   <ul>
+     <li *ngFor="let persona of datosServer.personas; let i=index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <!--<ion-card-title>Persona {{i+1}}</ion-card-title>-->
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Nombre: {{datosServer.personas[i].nombre}}</p>
+            <ion-button (click)="eliminarConfirm(i)">
+              <ion-icon name="close-outline"></ion-icon>
+            </ion-button>
+          </ion-card-content>
+        </ion-card>
+     </li>
+   </ul>
+  </div>
+
+</ion-content>

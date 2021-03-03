@@ -1,0 +1,35 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>
+      Mostrar contactos
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <div id="container">
+    <p *ngIf="datosServer.personas.length==0">No se han añadido contactos</p>
+    <ion-item *ngIf="datosServer.personas.length!=0">
+      <ion-label>Ver notas</ion-label>
+      <ion-toggle [(ngModel)]="verNotas"></ion-toggle>
+    </ion-item>
+   <ul>
+     <li *ngFor="let persona of datosServer.personas; let i=index">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle></ion-card-subtitle>
+            <!--<ion-card-title>Persona {{i+1}}</ion-card-title>-->
+          </ion-card-header>
+
+          <ion-card-content>
+            <p>Nombre: {{datosServer.personas[i].nombre}}</p>
+            <p>Telefono: {{datosServer.personas[i].telefono}}</p>
+            <p>e-mail: {{datosServer.personas[i].email}}</p>
+            <p *ngIf="verNotas==true">Notas: {{datosServer.personas[i].notas}}</p>
+            
+          </ion-card-content>
+        </ion-card>
+     </li>
+   </ul>
+  </div>
+</ion-content>
